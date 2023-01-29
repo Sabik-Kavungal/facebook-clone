@@ -4,17 +4,17 @@ class Post {
   final User user;
   final String caption;
   final String timeAgo;
-  final String imageUri;
-  final int link;
+  final String imageUrl;
+  final int likes;
   final int comments;
   final int shares;
 
   const Post(
       {required this.user,
-      required this.imageUri,
+      required this.imageUrl,
       required this.caption,
       required this.timeAgo,
-      required this.link,
+      required this.likes,
       required this.comments,
       required this.shares});
 }

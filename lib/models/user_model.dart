@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 class User {
   final String name;
-  final String imageUri;
+  final String imageUrl;
 
   const User({
     required this.name,
-    required this.imageUri});
+    required this.imageUrl});
 }

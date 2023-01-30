@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../widgets/circle_button.dart';
 import '../widgets/create_post_container.dart';
+import '../widgets/rooms.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -47,14 +48,21 @@ class _CustomAppBar extends StatelessWidget {
             CircleButton(
               icon: Icons.message_outlined,
               iconSize: 30.0,
-              onPressed: () => print('Search'),
+              onPressed: () => print('Message'),
             )
           ],
           systemOverlayStyle: SystemUiOverlayStyle.dark,
         ),
         const SliverToBoxAdapter(
           child: CreatePostContainer(currentUser: currentUser),
-        )
+        ),
+        SliverPadding(
+          padding: const EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 5.0),
+          sliver: SliverToBoxAdapter(
+
+            child: Rooms(onlineUsers: onlineUsers),
+          ),
+        ),
       ],
     );
   }

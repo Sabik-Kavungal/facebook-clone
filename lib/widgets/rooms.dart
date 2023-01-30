@@ -58,7 +58,10 @@ class _CreateRoomButton extends StatelessWidget {
             const SizedBox(
               width: 4.0,
             ),
-            const Text("Create\nRoom")
+            const Text(
+              "Create\nRoom",
+              style: TextStyle(color: GlobalVariable.facebookBlue),
+            )
           ],
         ),
       ),

@@ -124,14 +124,69 @@ class _PostStates extends StatelessWidget {
               post.comments.toString(),
               style: TextStyle(color: Colors.grey[600]),
             ),
-            const SizedBox(width: 8.0,),
+            const SizedBox(
+              width: 8.0,
+            ),
             Text(
               post.shares.toString(),
               style: TextStyle(color: Colors.grey[600]),
             )
           ],
+        ),
+        const Divider(),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            _PostButton(
+                icon:   Icons.thumb_up_outlined,
+                label: 'Like',
+                onTap: () => print("Like button clicked")),
+            _PostButton(
+                icon:   Icons.comment,
+                label: 'Comment',
+                onTap: () => print("Like button clicked")),
+            _PostButton(
+                icon:   Icons.share,
+                label: 'Share',
+                onTap: () => print("Like button clicked")),
+          ],
         )
       ],
+    );
+  }
+}
+
+class _PostButton extends StatelessWidget {
+  const _PostButton(
+      {Key? key, required this.icon, required this.label, required this.onTap})
+      : super(key: key);
+  final IconData icon;
+  final String label;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: Colors.white,
+      child: InkWell(
+        onTap: onTap,
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 12.0),
+          height: 25.0,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+              icon,
+                color: Colors.grey[600],
+                size: 25.0,
+              ),
+              const SizedBox(width: 4.0,),
+              Text(label)
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

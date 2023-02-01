@@ -2,8 +2,10 @@ import 'package:facebookclone/config/global_variables.dart';
 import 'package:facebookclone/data/datas.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import '../models/post_models.dart';
 import '../widgets/circle_button.dart';
 import '../widgets/create_post_container.dart';
+import '../widgets/post_container.dart';
 import '../widgets/rooms.dart';
 import '../widgets/stories.dart';
 
@@ -70,6 +72,12 @@ class _CustomAppBar extends StatelessWidget {
             child: Stories(currentUser: currentUser,stories : stories),
           ),
         ),
+        SliverList(delegate: SliverChildBuilderDelegate((context, index){
+          final Post post = posts[index];
+          return PostContainer(post:post);
+        },
+        childCount: posts.length,
+        ))
       ],
     );
   }

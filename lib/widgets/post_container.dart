@@ -1,3 +1,4 @@
+import 'package:facebookclone/config/global_variables.dart';
 import 'package:facebookclone/widgets/profile_avatar.dart';
 import 'package:flutter/material.dart';
 
@@ -35,13 +36,14 @@ class PostContainer extends StatelessWidget {
           ),
           post.imageUrl.isNotEmpty
               ? Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Image(image: NetworkImage(post.imageUrl)),
-              )
+                  padding: const EdgeInsets.all(8.0),
+                  child: Image(image: NetworkImage(post.imageUrl)),
+                )
               : const SizedBox.shrink(),
-
-          // Padding(padding: const EdgeInsets.symmetric(horizontal: 12.0),
-          // child: ,)
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12.0),
+            child: _PostStates(post: post),
+          )
         ],
       ),
     );
@@ -84,6 +86,51 @@ class _PostHeader extends StatelessWidget {
           ),
         ),
         IconButton(onPressed: () {}, icon: const Icon(Icons.more_horiz))
+      ],
+    );
+  }
+}
+
+class _PostStates extends StatelessWidget {
+  const _PostStates({Key? key, required this.post}) : super(key: key);
+  final Post post;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Row(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(4.0),
+              decoration: const BoxDecoration(
+                  color: GlobalVariable.facebookBlue, shape: BoxShape.circle),
+              child: const Icon(
+                Icons.thumb_up,
+                size: 10.0,
+                color: Colors.white,
+              ),
+            ),
+            const SizedBox(
+              width: 4.0,
+            ),
+            Expanded(
+              child: Text(
+                post.likes.toString(),
+                style: TextStyle(color: Colors.grey[600]),
+              ),
+            ),
+            Text(
+              post.comments.toString(),
+              style: TextStyle(color: Colors.grey[600]),
+            ),
+            const SizedBox(width: 8.0,),
+            Text(
+              post.shares.toString(),
+              style: TextStyle(color: Colors.grey[600]),
+            )
+          ],
+        )
       ],
     );
   }
